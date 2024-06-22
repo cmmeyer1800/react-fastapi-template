@@ -1,18 +1,16 @@
 services:
   backend:
     build: ../backend
-    image: givemecontent-backend
+    image: TOFILL_backend
     container_name: backend
     ports:
       - 8004:8000
     command: uvicorn app.main:app --host 0.0.0.0 --reload
     volumes:
-      - ../.env:/app/.env
       - ../backend:/app
-      - ../content:/content
     environment:
-      - GMC_CONTENT_DIR=/content
-      - GMC_REDIS_URI=redis://redis:6379
+      - TOFILL_REDIS_URI=redis://redis:6379
+      - TOFILL_DATABASE_URI=postgresql://db_user:db_pass@db:5432/db
     depends_on:
       - db
 
@@ -53,3 +51,39 @@ services:
       - "8090:3000"
     working_dir: /app
     command: "npm start"
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    # ports:
+    #   - "6379:6379"
+
+  celery:
+    build: ../backend
+    image: TOFILL_celery
+    container_name: celery
+    volumes:
+      - ../backend:/app
+    environment:
+      - TOFILL_REDIS_URI=redis://redis:6379
+      - TOFILL_DATABASE_URI=postgresql://db_user:db_pass@db:5432/db
+    command: celery -A app.celery.worker.celery worker --loglevel=info -P threads
+    depends_on:
+      - db
+      - redis
+
+  # flower:
+  #   build: ../backend
+  #   image: TOFILL_flower
+  #   container_name: flower
+  #   volumes:
+  #     - ../backend:/app
+  #   environment:
+  #     - TOFILL_REDIS_URI=redis://redis:6379
+  #     - TOFILL_DATABASE_URI=postgresql://db_user:db_pass@db:5432/db
+  #   command: flower -A app.celery.worker.celery --port=5555
+  #   ports:
+  #     - "5555:5555"
+  #   depends_on:
+  #     - db
+  #     - redis

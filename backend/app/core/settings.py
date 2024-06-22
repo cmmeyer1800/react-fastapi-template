@@ -27,8 +27,6 @@ class Settings(BaseSettings):
 
     database_uri: str
 
-    content_dir: Path = Path("/content")
-
     redis_uri: str = "redis://redis:6379"
 
     model_config = SettingsConfigDict(
