@@ -26,7 +26,7 @@ services:
     - NGINX_HOST=localhost
     - NGINX_PORT=80
     depends_on:
-      - node
+      - frontend
       - backend
 
   db:
@@ -42,11 +42,13 @@ services:
     # ports:
     #   - "5432:5432"
 
-  node:
-    image: node:22-slim
+  frontend:
+    build: ../frontend
+    image: tofill_frontend # TOFILL
     container_name: frontend
     volumes:
-      - ../frontend:/app
+      - ../frontend/public:/app/public
+      - ../frontend/src:/app/src
     ports:
       - "8090:3000"
     working_dir: /app
