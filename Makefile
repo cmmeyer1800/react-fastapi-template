@@ -4,6 +4,11 @@ run:
 	@echo "Running development server..."
 	@docker compose --file docker/docker-compose-dev.yml up
 
+.PHONY: run-db
+run-db:
+	@echo "Running development server..."
+	@docker compose --file docker/docker-compose-dev.yml up db
+
 .PHONY: run-api
 run-api:
 	@echo "Running development server..."
