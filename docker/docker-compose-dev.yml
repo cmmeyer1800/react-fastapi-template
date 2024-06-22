@@ -17,7 +17,7 @@ services:
       - db
 
   nginx:
-    image: nginx
+    image: nginx:1.27.0
     container_name: nginx
     volumes:
     - ./nginx-conf:/etc/nginx/conf.d
@@ -45,7 +45,7 @@ services:
     #   - "5432:5432"
 
   node:
-    image: node
+    image: node:22-slim
     container_name: frontend
     volumes:
       - ../frontend:/app
