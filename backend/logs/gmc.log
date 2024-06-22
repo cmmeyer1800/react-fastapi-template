@@ -1,0 +1,35 @@
+[2024-06-22 00:45:34,655] [app.db.utils] [INFO] Database initialized (Note: Currently no init)
+[2024-06-22 00:45:34,657] [app.main] [INFO] CORS middleware initialized
+[2024-06-22 00:45:34,657] [app.main] [DEBUG] CORS hosts: ['*']
+[2024-06-22 00:45:34,658] [app.main] [INFO] API routers initialized
+[2024-06-22 00:45:34,658] [app.main] [INFO] Application initialized
+[2024-06-22 00:48:50,826] [app.db.utils] [INFO] Database initialized (Note: Currently no init)
+[2024-06-22 00:48:50,829] [app.main] [INFO] CORS middleware initialized
+[2024-06-22 00:48:50,830] [app.main] [DEBUG] CORS hosts: ['*']
+[2024-06-22 00:48:50,830] [app.main] [INFO] API routers initialized
+[2024-06-22 00:48:50,831] [app.main] [INFO] Application initialized
+[2024-06-22 00:50:04,806] [app.db.utils] [INFO] Database initialized (Note: Currently no init)
+[2024-06-22 00:50:04,808] [app.main] [INFO] CORS middleware initialized
+[2024-06-22 00:50:04,808] [app.main] [DEBUG] CORS hosts: ['*']
+[2024-06-22 00:50:04,809] [app.main] [INFO] API routers initialized
+[2024-06-22 00:50:04,809] [app.main] [INFO] Application initialized
+[2024-06-22 00:50:15,236] [app.db.utils] [INFO] Database initialized (Note: Currently no init)
+[2024-06-22 00:50:15,238] [app.main] [INFO] CORS middleware initialized
+[2024-06-22 00:50:15,238] [app.main] [DEBUG] CORS hosts: ['*']
+[2024-06-22 00:50:15,238] [app.main] [INFO] API routers initialized
+[2024-06-22 00:50:15,239] [app.main] [INFO] Application initialized
+[2024-06-22 00:51:00,164] [app.db.utils] [INFO] Database initialized (Note: Currently no init)
+[2024-06-22 00:51:00,166] [app.main] [INFO] CORS middleware initialized
+[2024-06-22 00:51:00,166] [app.main] [DEBUG] CORS hosts: ['*']
+[2024-06-22 00:51:00,167] [app.main] [INFO] API routers initialized
+[2024-06-22 00:51:00,167] [app.main] [INFO] Application initialized
+[2024-06-22 00:51:03,771] [app.db.utils] [INFO] Database initialized (Note: Currently no init)
+[2024-06-22 00:51:03,772] [app.main] [INFO] CORS middleware initialized
+[2024-06-22 00:51:03,773] [app.main] [DEBUG] CORS hosts: ['*']
+[2024-06-22 00:51:03,773] [app.main] [INFO] API routers initialized
+[2024-06-22 00:51:03,774] [app.main] [INFO] Application initialized
+[2024-06-22 01:08:15,858] [app.db.utils] [INFO] Database initialized (Note: Currently no init)
+[2024-06-22 01:08:15,858] [app.main] [INFO] CORS middleware initialized
+[2024-06-22 01:08:15,859] [app.main] [DEBUG] CORS hosts: ['*']
+[2024-06-22 01:08:15,859] [app.main] [INFO] API routers initialized
+[2024-06-22 01:08:15,859] [app.main] [INFO] Application initialized

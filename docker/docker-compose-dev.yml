@@ -1,0 +1,55 @@
+services:
+  backend:
+    build: ../backend
+    image: givemecontent-backend
+    container_name: backend
+    ports:
+      - 8004:8000
+    command: uvicorn app.main:app --host 0.0.0.0 --reload
+    volumes:
+      - ../.env:/app/.env
+      - ../backend:/app
+      - ../content:/content
+    environment:
+      - GMC_CONTENT_DIR=/content
+      - GMC_REDIS_URI=redis://redis:6379
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx
+    container_name: nginx
+    volumes:
+    - ./nginx-conf:/etc/nginx/conf.d
+    - ../content:/content
+    ports:
+    - "8080:80"
+    environment:
+    - NGINX_HOST=localhost
+    - NGINX_PORT=80
+    depends_on:
+      - node
+      - backend
+
+  db:
+    image: postgres:16.3
+    container_name: db
+    volumes:
+      - ../dbdata:/var/lib/postgresql/data
+    environment:
+      # NOTE: THESE MUST BE CHANGED IN PRODUCTION
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=db_pass
+      - POSTGRES_DB=db
+    # ports:
+    #   - "5432:5432"
+
+  node:
+    image: node
+    container_name: frontend
+    volumes:
+      - ../frontend:/app
+    ports:
+      - "8090:3000"
+    working_dir: /app
+    command: "npm start"
