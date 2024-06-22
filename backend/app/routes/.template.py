@@ -13,9 +13,11 @@ logger = get_logger(__name__)
 
 router = APIRouter(prefix="/TOFILL")
 
+
 @router.get("/")
 def TO_FILL():
     """TOFILL"""
     pass
+
 
 logger.info("TOFILL router initialized")
