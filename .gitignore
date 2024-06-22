@@ -2,5 +2,5 @@ dbdata/
 __pycache__/
 
 .DS_STORE
-.db
-.log
+*.db
+*.log

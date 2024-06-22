@@ -1,7 +1,7 @@
 services:
   backend:
     build: ../backend
-    image: TOFILL_backend
+    image: tofill_backend # TOFILL
     container_name: backend
     ports:
       - 8004:8000
@@ -60,7 +60,7 @@ services:
 
   celery:
     build: ../backend
-    image: TOFILL_celery
+    image: tofill_backend # TOFILL 
     container_name: celery
     volumes:
       - ../backend:/app
@@ -74,7 +74,7 @@ services:
 
   # flower:
   #   build: ../backend
-  #   image: TOFILL_flower
+  #   image: tofill_backend # TOFILL
   #   container_name: flower
   #   volumes:
   #     - ../backend:/app
