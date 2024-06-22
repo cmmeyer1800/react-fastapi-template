@@ -15,7 +15,7 @@ router = APIRouter(prefix="/TOFILL")
 
 
 @router.get("/")
-def TO_FILL():
+def TOFILL():
     """TOFILL"""
     pass
 
