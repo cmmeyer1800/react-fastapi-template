@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import './errorContext.css';
-import globals from './Globals';
+import globals from '../Globals';
 
 const ErrorContext = createContext({errors: [], addError: () => {}});
 

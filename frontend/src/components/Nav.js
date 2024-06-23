@@ -1,6 +1,13 @@
-import { ThemeUpdaterButton } from "./ThemeContext";
+import { useState } from "react";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
+
+import { ThemeUpdaterButton } from "./context/ThemeContext";
+import { IconLink } from "./Links";
+
 
 const Nav = () => {
+    const [burgOpen, setBurgOpen] = useState(false);
+
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
@@ -8,15 +15,16 @@ const Nav = () => {
                 TOFILL
             </a>
 
-            <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
+            <a role="button" className={`navbar-burger ${burgOpen ? 'is-active': ''}`} aria-label="menu" onClick={() => setBurgOpen(!burgOpen)}
+               aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
             </a>
         </div>
 
-        <div id="navbarBasicExample" className="navbar-menu">
+        <div id="navbarBasicExample" className={`navbar-menu ${burgOpen ? 'is-active': ''}`}>
             <div className="navbar-start">
 
             <a className="navbar-item" href="/#docs" onClick={(e) => e.preventDefault()}>
@@ -45,7 +53,12 @@ const Nav = () => {
 
             <div className="navbar-end">
                 <div className="navbar-item">
-                    <ThemeUpdaterButton/>
+                    <IconLink href={'/admin'} icon={MdOutlineAdminPanelSettings}>
+                        Administration
+                    </IconLink>
+                </div>
+                <div className="navbar-item">
+                    <ThemeUpdaterButton />
                 </div>
             </div>
         </div>

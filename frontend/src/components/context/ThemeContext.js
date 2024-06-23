@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
-import globals from './Globals';
+import globals from '../Globals';
 
 import { FaSun, FaMoon } from "react-icons/fa6";
 
