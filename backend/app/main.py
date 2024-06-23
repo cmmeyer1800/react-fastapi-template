@@ -8,6 +8,7 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
 from app.routes import router as api_router
+from app.core.metadata import TAGS_METADATA
 from app.core.settings import get_settings
 from app.core.logging import get_logger
 from app.db.utils import init as db_init
@@ -26,6 +27,7 @@ def get_application() -> FastAPI:
         version=settings.version,
         docs_url=settings.docs_url,
         openapi_url=settings.openapi_url,
+        openapi_tags=TAGS_METADATA,
     )
 
     # Database Init
