@@ -5,7 +5,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from './routes/Home';
 import Admin from './routes/Admin';
+import Login from './routes/Login';
+import NotFound from './routes/NotFound';
 import Layout from "./components/Layout";
+import { OAuthManager } from './components/context/OAuthContext';
 import { ThemeManager } from './components/context/ThemeContext';
 import { ErrorManager } from './components/context/ErrorContext';
 
@@ -14,17 +17,20 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeManager>
     <ErrorManager>
-      <React.StrictMode>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Home />} />
-              <Route path="/admin/*" element={<Admin />} />
-              <Route path="*" element={<></>} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </React.StrictMode>
+      <OAuthManager>
+        <React.StrictMode>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="/admin/*" element={<Admin />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </React.StrictMode>
+      </OAuthManager>
     </ErrorManager>
   </ThemeManager>
 );

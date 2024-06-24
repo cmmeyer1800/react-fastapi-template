@@ -5,9 +5,9 @@ const globals = {
 
     errorTimeout: 2000,
 
-    oauthBackendURL: 'https://test.capcount.org',
-    oauthTokenEndpoint: '/api/v1/auth/token',
-    oauthUserEndpoint: '/api/v1/auth/users/me'
+    oauthBackendURL: 'http://localhost:8080',
+    oauthTokenEndpoint: '/api/v1/token',
+    oauthUserEndpoint: '/api/v1/users/me'
 };
 
 export default globals;

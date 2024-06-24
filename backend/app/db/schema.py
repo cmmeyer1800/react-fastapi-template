@@ -12,8 +12,8 @@ class User(Base):
     """User model"""
     __tablename__ = "user"
     id = Column(Integer, primary_key=True, index=True)
-    first = Column(String)
-    last = Column(String)
+    first = Column(String, nullable=True)
+    last = Column(String, nullable=True)
     email = Column(String, unique=True)
     hashed_password = Column(String)
     is_active = Column(Boolean, default=True)

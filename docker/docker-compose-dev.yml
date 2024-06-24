@@ -11,6 +11,9 @@ services:
     environment:
       - TOFILL_REDIS_URI=redis://redis:6379
       - TOFILL_DATABASE_URI=postgresql://db_user:db_pass@db:5432/db
+      - TOFILL_SECRET_KEY=2d396632aac1749beb5c7b05a2f011f0d17605deea94d03910988027d71095fb
+      - TOFILL_ADMIN_EMAIL=admin@localhost.com
+      - TOFILL_ADMIN_PASSWORD=admin
     depends_on:
       - db
 

@@ -29,12 +29,19 @@ class Settings(BaseSettings):
 
     redis_uri: str = "redis://redis:6379"
 
+    secret_key: str
+
+    access_token_expire_minutes: int = 30
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
         env_prefix="TOFILL_",
         case_sensitive=False,
     )
+
+    admin_email: str
+    admin_password: str
 
 
 @lru_cache()

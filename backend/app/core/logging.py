@@ -22,7 +22,7 @@ def get_logger(name: str) -> logging.Logger:
     logger.setLevel(logging.getLevelName(settings.log_level.upper()))
 
     formatter = logging.Formatter(
-        "[%(asctime)s] [%(name)s] [%(levelname)s] %(message)s"
+        "[%(asctime)s] [%(name)s] [:%(lineno)d] [%(levelname)s] %(message)s"
     )
 
     # Stderr logging

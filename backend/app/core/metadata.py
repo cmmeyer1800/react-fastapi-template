@@ -2,6 +2,10 @@
 TAGS_METADATA = [
     {
         "name": "users",
-        "description": "Operations with users. The **login** logic is also here.",
+        "description": "Admin operations with users",
+    },
+    {
+        "name": "auth",
+        "description": "Operations with authentication"
     }
 ]

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
 import { ThemeUpdaterButton } from "./context/ThemeContext";
+import { OAuthContext } from "./context/OAuthContext";
 import { IconLink } from "./Links";
 
 
@@ -50,17 +51,30 @@ const Nav = () => {
                 </div>
             </div>
             </div>
-
-            <div className="navbar-end">
-                <div className="navbar-item">
-                    <IconLink href={'/admin'} icon={MdOutlineAdminPanelSettings}>
-                        Administration
-                    </IconLink>
-                </div>
-                <div className="navbar-item">
-                    <ThemeUpdaterButton />
-                </div>
-            </div>
+            <OAuthContext.Consumer>
+            {({authed, admin, logout}) => {
+                return (
+                    <div className="navbar-end">
+                        <div className="navbar-item">
+                            {authed && admin && <IconLink href={'/admin'} icon={MdOutlineAdminPanelSettings}>
+                                Administration
+                            </IconLink>}
+                        </div>
+                        <div className="navbar-item">
+                            <ThemeUpdaterButton />
+                        </div>
+                        <div className="navbar-item">
+                            {authed && <a className="button is-danger" onClick={logout}>
+                                Logout
+                            </a>}
+                            {!authed && <a className="button is-primary" href="/login">
+                                Login
+                            </a>}
+                        </div>
+                    </div>
+                )
+            }}
+            </OAuthContext.Consumer>
         </div>
         </nav>
     )
