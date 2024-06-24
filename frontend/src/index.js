@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from './routes/Home';
-import Admin from './routes/Admin';
+import Admin from './routes/admin/Admin';
 import Login from './routes/Login';
 import NotFound from './routes/NotFound';
 import Layout from "./components/Layout";

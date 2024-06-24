@@ -12,38 +12,41 @@ const Login = () => {
     return (
         <div className="columns">
             <div className="column is-4 is-offset-4 box">
-                <h1 className="title has-text-centered">Log Into Account</h1>
-                <div className="field">
-                    <label className="label">Username</label>
-                    <div className="control has-icons-left">
-                        <input className="input" type="email" placeholder="Text input"
-                            value={username} onChange={(e) => {
-                                setUsername(e.target.value);
-                        }}></input>
-                        <span className="icon is-small is-left">
-                            <FaEnvelope />
-                        </span>
+                <form onSubmit={(e) => {
+                    login(e.target[0].value, e.target[1].value);
+                    e.preventDefault();
+                }}>
+                    <h1 className="title has-text-centered">Log Into Account</h1>
+                    <div className="field">
+                        <label className="label">Username</label>
+                        <div className="control has-icons-left">
+                            <input className="input" type="email" placeholder="Text input"
+                                value={username} onChange={(e) => {
+                                    setUsername(e.target.value);
+                            }}></input>
+                            <span className="icon is-small is-left">
+                                <FaEnvelope />
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div className="field">
-                    <label className="label">Password</label>
-                    <div className="control has-icons-left">
-                        <input className="input" type="password" placeholder="Password"
-                            value={password} onChange={(e) => {
-                                setPassword(e.target.value);
-                        }}></input>
-                        <span className="icon is-small is-left">
-                            <FaLock />
-                        </span>
+                    <div className="field">
+                        <label className="label">Password</label>
+                        <div className="control has-icons-left">
+                            <input className="input" type="password" placeholder="Password"
+                                value={password} onChange={(e) => {
+                                    setPassword(e.target.value);
+                            }}></input>
+                            <span className="icon is-small is-left">
+                                <FaLock />
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div className="field">
-                    <div className="control">
-                        <button className="button is-primary is-fullwidth" onClick={() => {
-                            login(username, password);
-                        }}>Login</button>
+                    <div className="field">
+                        <div className="control">
+                            <button className="button is-primary is-fullwidth">Login</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     )

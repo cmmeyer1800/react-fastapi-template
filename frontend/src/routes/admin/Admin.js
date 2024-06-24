@@ -1,10 +1,11 @@
 import { useLocation } from 'react-router-dom';
 
-import AdminSideBar from "../components/Sidebar";
+import AdminSideBar from "../../components/Sidebar";
+import AdminUsers from './AdminUsers';
 
 const pages = {
     "/admin": "Dashboard",
-    "/admin/users": "Users",
+    "/admin/users": <AdminUsers />,
     "/admin/users/create": "Add Users",
     "/admin/users/settings": "User Settings",
     "/admin/config/database": "Database"
