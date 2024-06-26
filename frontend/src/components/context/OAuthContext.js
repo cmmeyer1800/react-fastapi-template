@@ -11,7 +11,10 @@ const OAuthContext = createContext(
 const OAuthManager = ({ children, initCheck = true }) => {
     const [cookies, setCookie, deleteCookie] = useCookies([globals.cookiesPrefix+'-oauth']);
     const [authed, setAuthed] = useState(cookies[globals.cookiesPrefix+'-oauth'] !== undefined);
-    const [admin, setAdmin] = useState(false);
+    const [admin, setAdmin] = useState(
+        cookies[globals.cookiesPrefix+'-oauth'] !== undefined &&
+        cookies[globals.cookiesPrefix+'-oauth'].grants.includes("admin")
+    );
 
     useEffect(() => {
         if (initCheck) validateAuth();
@@ -43,10 +46,11 @@ const OAuthManager = ({ children, initCheck = true }) => {
             return {status: "error", message: error}
         });
 
-        if (data.status === "error") return data;
+        if (data.status === "error"){
+            return data;
+        }
 
         const oauth = data.data;
-        console.log(oauth)
         if(oauth === undefined || (!('access_token' in oauth)) || 
             (oauth.grants === undefined || !oauth.grants.includes("user"))){
 
@@ -55,7 +59,6 @@ const OAuthManager = ({ children, initCheck = true }) => {
         }
 
         setCookie(globals.cookiesPrefix+'-oauth', oauth, { path: '/' });
-        console.log("test")
         setAuthed(true);
         setAdmin(oauth.grants.includes("admin"));
 
@@ -87,6 +90,8 @@ const OAuthManager = ({ children, initCheck = true }) => {
     const logout = () => { 
         deleteCookie(globals.cookiesPrefix+'-oauth');
         setAuthed(false);
+        setAdmin(false);
+        window.location.reload();
     }
 
     const validateAuth = async () => {
@@ -104,6 +109,7 @@ const OAuthManager = ({ children, initCheck = true }) => {
             }
         }
     }
+    console.log(admin)
 
     return (
         <OAuthContext.Provider value={{authed: authed, admin: admin, getToken: getToken, login: login, logout: logout}}>

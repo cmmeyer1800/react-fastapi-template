@@ -8,6 +8,7 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
 from app.routes import router as api_router
+from app.core.middleware import install_middleware
 from app.core.metadata import TAGS_METADATA
 from app.core.settings import get_settings
 from app.core.logging import get_logger
@@ -44,6 +45,8 @@ def get_application() -> FastAPI:
     )
     logger.info("CORS middleware initialized")
     logger.debug("CORS hosts: %s", settings.cors_origins)
+
+    install_middleware(application)
 
     # Router Init
     application.include_router(api_router)

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
+import { useLocation } from 'react-router-dom';
 
 import { ThemeUpdaterButton } from "./context/ThemeContext";
 import { OAuthContext } from "./context/OAuthContext";
@@ -7,6 +8,7 @@ import { IconLink } from "./Links";
 
 
 const Nav = () => {
+    const location = useLocation();
     const [burgOpen, setBurgOpen] = useState(false);
 
     return (
@@ -67,7 +69,7 @@ const Nav = () => {
                             {authed && <a className="button is-danger" onClick={logout}>
                                 Logout
                             </a>}
-                            {!authed && <a className="button is-primary" href="/login">
+                            {!authed && <a className="button is-primary" href={`/login?redir=${location.pathname}`}>
                                 Login
                             </a>}
                         </div>

@@ -135,12 +135,12 @@ class UserManager:
             User | None: User if authenticated, None if not
         """
         user = self.get_user(user_id)
-        print(user.__dict__)
         if not user:
             return None
         if not verify_pwd(password, user.hashed_password):
-            user.failed_logins += 1
+            user.failed_login_attempts += 1
             self.session.commit()
+            return None
 
         # user.logins += 1
         self.session.commit()

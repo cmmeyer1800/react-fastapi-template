@@ -2,10 +2,12 @@
 from fastapi import APIRouter, Depends
 
 from app.models import User, UserCreate, UserUpdate
+from app.models.meta import PerformanceMetrics
 from app.core.settings import get_settings
 from app.core.logging import get_logger
 from app.db.schema import User as UserSchema
 from app.deps.users import get_current_admin_user, UserManager, get_user_manager
+from app.core.middleware import perf_mid
 
 settings = get_settings()
 logger = get_logger(__name__)
@@ -74,3 +76,17 @@ def delete_user(email: str, user_manager: UserManager = Depends(get_user_manager
 
 
 logger.info("admin router initialized")
+
+
+@router.get("/performance", tags=["performance"])
+def get_performance(admin_user: UserSchema = Depends(get_current_admin_user)) -> PerformanceMetrics:
+    """Get performance metrics
+    
+    Returns:
+    - Dict: Performance metrics
+    """
+    return PerformanceMetrics(
+        rps=perf_mid.rps,
+        system_uptime=perf_mid.uptime,
+        average_response_time=perf_mid.response_time
+    )
