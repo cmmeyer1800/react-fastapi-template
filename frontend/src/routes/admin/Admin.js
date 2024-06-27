@@ -6,11 +6,13 @@ import AdminSideBar from "../../components/Sidebar";
 import AdminUsers from './AdminUsers';
 import AdminDashboard from './AdminDashboard';
 import AdminUserAdd from './AdminUsersAdd';
+import AdminUserEdit from './AdminUsersEdit';
 
 const pages = {
     "/admin": <AdminDashboard />,
     "/admin/users": <AdminUsers />,
     "/admin/users/create": <AdminUserAdd />,
+    "/admin/users/edit": <AdminUserEdit/>,
     "/admin/users/settings": "User Settings",
     "/admin/config/database": "Database"
 }

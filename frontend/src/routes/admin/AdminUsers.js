@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
+import { FaPencil } from "react-icons/fa6";
 
 import { OAuthContext } from '../../components/context/OAuthContext';
 
@@ -35,13 +36,16 @@ const AdminUsers = () => {
                         <th>Last</th>
                         <th>Admin</th>
                         <th>Disabled</th>
-                        <th>Creation</th>
-                        <th>Update</th>
+                        <th>Creation Time</th>
+                        <th>Last Update Time</th>
                     </tr>
                 </thead>
                 <tbody>
                     {users.map((user, index) => (
-                        <tr key={index}>
+                        <tr key={index} onClick={(e) => {
+                            e.preventDefault();
+                            window.location.href = '/admin/users/edit?user=' + encodeURI(user.email);
+                        }} style={{cursor: "pointer"}}>
                             <td>{user.email}</td>
                             <td>{user.first}</td>
                             <td>{user.last}</td>
@@ -49,6 +53,7 @@ const AdminUsers = () => {
                             <td>{user.is_active ? "No" : "Yes"}</td>
                             <td>{user.time_created}</td>
                             <td>{user.time_updated}</td>
+                            {/* <td><a href={"/admin/users/edit?user=" + encodeURI(user.email)}><FaPencil/></a></td> */}
                         </tr>
                     ))}
                 </tbody>

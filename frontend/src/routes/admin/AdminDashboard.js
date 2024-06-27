@@ -61,18 +61,18 @@ const AdminDashboard = () => {
             </div>
             <br></br>
             <br></br>
-            <div className="columns is-vcentered">
-                <div className="column is-2 is-offset-2">
+            <div className="columns is-vcentered ml-4 mr-4">
+                <div className="column is-4">
                     <h2 className="subtitle has-text-centered">System Uptime</h2>
                     <hr></hr>
-                    <p className="title is-2 has-text-centered">{uptime}</p>
+                    <p className="title is-1 has-text-centered">{uptime}</p>
                 </div>
-                <div className="column is-2 is-offset-1">
+                <div className="column is-4">
                     <h2 className="subtitle has-text-centered">Average Response Time</h2>
                     <hr></hr>
                     <p className="title is-1 has-text-centered">{art} ms</p>
                 </div>
-                <div className="column is-2 is-offset-1">
+                <div className="column is-4">
                     <h2 className="subtitle has-text-centered">API Load</h2>
                     <hr></hr>
                     <p className="title is-1 has-text-centered">{api_load} rps</p>

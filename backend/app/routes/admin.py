@@ -1,5 +1,5 @@
 """TOFILL"""
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 
 from app.models import User, UserCreate, UserUpdate
 from app.models.meta import PerformanceMetrics
@@ -31,6 +31,24 @@ def get_users(page: int = 0, limit: int = 25,
     - List[User]: List of users
     """
     return user_manager.get_users(page=page, limit=limit)
+
+
+@router.get("/user", tags=["users"])
+def get_user(user_id: str, user_manager: UserManager = Depends(get_user_manager),
+              user: UserSchema = Depends(get_current_admin_user)) -> User:
+    """Get user by email
+
+    Query Parameters:
+    - user_id (str): Users email to search for
+    
+    Returns:
+    - List[User]: List of users
+    """
+    user = user_manager.get_user(user_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    return User.model_validate(user.__dict__)
 
 
 @router.post("/users", tags=["users"])
